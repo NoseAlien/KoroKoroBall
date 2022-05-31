@@ -9,10 +9,12 @@ public class Goal : MonoBehaviour
     public AudioSource audioSource;
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("ÉSÅ[ÉãÅI");
-
-        clearText.SetActive(true);
-        nextButton.SetActive(true);
-        audioSource.Play();
+        if (other.GetComponent<PlayerControler>() != null)
+        {
+            clearText.SetActive(true);
+            nextButton.SetActive(true);
+            audioSource.Play();
+            other.GetComponent<PlayerControler>().goaled = true;
+        }
     }
 }
